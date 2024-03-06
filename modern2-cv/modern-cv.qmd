@@ -1,0 +1,207 @@
+---
+title: CV
+format:
+  modern2-cv-pdf: default
+author: Gareth Burns
+cvfont: raleway 
+cvcolor: 
+  main: B83B5E
+  accent: 6A2C70
+jobtitle: Senior Data Scientist 
+sidebar:
+  image: portrait.jpg
+  sections: 
+    - name: Technical Skills
+      items:
+        - text: R
+          exp: 
+            text: "10+ yrs"
+            num: 1
+        - text: Data Analysis
+          exp: 
+            text: "10+ yrs"
+            num: 0.8
+        - text: Shiny
+          exp: 
+            text: "5 yrs"
+            num: 0.7
+        - text: RMarkdown
+          exp: 
+            text: "8 yr"
+            num: 0.7
+        - text: Quarto
+          exp: 
+            text: "2 yr"
+            num: 0.4
+        - text: Git
+          exp: 
+            text: "7 yr"
+            num: 0.6
+        - text: SQL
+          exp: 
+            text: "7 yr"
+            num: 0.3
+    - name: Management
+      items:
+        - text: Project Management
+          exp: 
+            text: "10+ yrs"
+            num: 0.7
+        - text: Requirments Gathering
+          exp: 
+            text: "10+ yrs"
+            num: 0.8
+        - text: Mentoring & Training
+          exp: 
+            text: "10+ yrs"
+            num: 0.8
+        - text: Product Owner
+          exp: 
+            text: "5 yrs"
+            num: 0.5
+        - text: Team Lead
+          exp: 
+            text: "4 yrs"
+            num: 0.6
+        - text: Scientific & Coporate Comunication
+          exp: 
+            text: "10+ yrs"
+            num: 0.7
+    - name: Education
+      items:
+        - text: "Ph.D. Computational Biology"
+          inst: "Queen's University of Belfast"
+          time: "2008 - 2012"
+          details: "Variation in the nutritive quality of Lolium as assessed by Near infrared reflectance spectroscopy"
+        - text: "Environmental Biology B.Sc. Hons"
+          inst: "Queen's University of Belfast"
+          time: "2004 - 2007"
+    - name: Contact
+      items:
+        - icon: map-marker
+          text: Belfast, Northern Ireland
+        - icon: envelope
+          text: {{< env  EMAIL_ADDRESS >}}
+        - icon: github
+          text: GABurns
+          href: https://github.com/GABurns
+        - icon: twitter
+          text: GarethBurns4
+          href: https://twitter.com/GarethBurns4  
+        - icon: linkedin
+          text: DrGarethBurns
+          href: https://www.linkedin.com/in/drgarethburns/   
+execute: 
+  echo: false
+---
+
+```{r}
+#| label: cvevents
+cvevents <- function(tbl, when, what, where, descr) {
+
+    command_start <- "\\cvevent"
+    tbl[[where]] <- gsub("\n", " \\\\newline ", tbl[[where]])
+    res <- paste0(
+        command_start, "{", tbl[[when]], "}", 
+        "{", tbl[[what]], "}",
+        "{", tbl[[where]], "}",
+        "{", tbl[[descr]], "}"
+        )
+
+    cat(res, sep = "\n\n\n")
+}
+
+cvproj <- function(tbl,what,role,items){
+    command_start <- "\\cvproj"
+    res <- paste0(
+        command_start, "{", tbl[[what]], "}",
+        "{", tbl[[role]], "}",
+        "{", sapply(tbl[[items]], function(x)paste0(x,collapse = ", ")), "}"
+    )
+
+    cat(res, sep = "\n\n\n")
+}
+```
+
+# Summary
+
+An award-winning Data Scientist with over 10 years of experience of successfully delivering projects in a diverse range of scientific industries and technologies. I have excellent communication skills with the ability to convey complex topics to a non-technical audience using a range of mediums and carry out horizon scanning and requirements gathering to inform road maps.
+
+I am experienced in working with a range of stakeholders, from internal *ad hoc* data analysis, implementation of annual national biological data analysis pipelines to inform international policy to working with a complex code base (c. 20,000 lines) to develop new statistical features for a production grade software as a service (SAAS) clinical trial simulation platform.
+
+As a qualified project manager (CAPM) I have carried out a range in Project Management duties throughout the project lifecycle in a range of Data Science projects including using AGILE methodologies. This includes success
+
+# Key Achievements
+
+Some of the key achievements demonstrating success in multiple skills and industries.
+
+```{r}
+#| label: acheivement 
+#| output: asis 
+tibble::tribble(
+  ~ what,
+  ~ role,
+  ~ items,
+  "Jumping Rivers: Shiny in Production 2022",
+  "Invited Speaker",
+  "Presented on how to develop production grade Shiny applications for Data Science applications, Deployment on cloud-based computing servies and how to address issues arising.",
+  "The Effective Statistician: Mastering study design and strategy with Simulation",
+  "Expert Lecturer",
+  "Provided a lecture in carrying out code optimising for simulations to result in 1000x faster run times.  Demonstrating how to carry out code Profiling and Benchmarking.",
+  "Innovate UK Project: Expansion of a clinical trial modelling and simulation platform to optimise trial design and facilitate synthetic data generation",
+  "Workpackage Leader: Software and algorithm development",
+ "Developed two production-grade (Shiny) applications to improve in the extraction and transformation of real world data for use Exploristics flagship simulation software. These applications has a bespoke API that securely communicated with KerusCloud using a single login and reduced transcribing of data.",
+ "H2020 Project: InnoVar",
+ "Work Package Leader: Synergies and Future Development", 
+ "21 partner 5 million funded international project whereby I organised an annual Stakeholder Forum to gather requirements and feedback from a diverse range of stakeholders to steer the direction of project. Roadmap for the implementation of drones for the collection of field plot data.",
+ "Marketing campaign",
+ "Exploristics: Statisticians in the Pharmaceutical Industry",
+ "Developed a production grade application with a statistical game and data-driven  marketing collotoral to generate brand awareness and collect contact details. Resulted in 60 conference attendees playing application with 95 supplying contact details. Social media collotoral had 250 - 400  increase from baseline metrics."
+) |>     cvproj(what = "what", role = "role", items = "items") 
+```
+
+# Experience
+
+```{r}
+#| label: experience
+#| output: asis
+tibble::tribble(
+  ~ role,
+  ~ institution,
+  ~ dates,
+  ~ details,
+  "Senior Data Scientist",
+  "Product Development Team\nExploristics",
+  "08/2021 - Present",
+  "Developing Exploristics flagship cloud-based (AWS) Software as a Service (SAAS) clinicial trial simulation engine (R6). This involves researching novel clincial trial design features and analysis and implementing in production grade software.
+Product Owner of the KerusCloud ecosystems - a collection of data tools and packages to assist in common features using simulated datasets.",
+  "Senior Data Scientist",
+  "Sociology Department\nAgri-Food and Biosciences Institute",
+  "06/2020 - 08/2021",
+  "Project Leader for Plant Breeders Rights
+• Managed a national statutory testing program (c.600 k per annum) to collect complex biological timeseries and weather data (c. 4 million datapoints collected per annum).
+• Developed a strategy to modernise dated data collection and storage systems using novel technology and cutting edge techniques.
+• Technical expert on multiple national and international committees covering policy, governance, and emerging technologies.",
+  "Team Lead",
+  "Data Strategy\nExploristics",
+  "04/2019 - 06/2020",
+  "Leading a team of Data Scientists to develop innovatative tools and solutions for the KerusCloud ecosystem and successfully delivered all deliverables for a Innovate grant",
+  "Data Scientist",
+  "Marine Fisheries\nAgri-Food and Biosciences Institute",
+  "04/2016 - 04/2019",
+  "Database co-ordinator for Northern Ireland commercial fisheries data for the purposes of reporting to international stock assessment programmes. Duties include:
+• Coordination, collation and analysis of fisheries-independent and fisheries dependent data and meta-data from multiple sources (c. 10 million biological data points per annum).
+• Delivery of specialist advice to international technical and scientific committees.
+• Automation of analysis and reports (R Markdown) ensuring reproducible research.",
+    "PhD Candiate",
+  "School of Biological Sciences\nQueen's University of Belfast",
+  "04/2008 - 04/2012",
+  "Development of predictive calibration models to assess the nutritive quality of perennial ryegrass. This involved data collection of 15,000 biolgical samples each wth 692 data points from wet labortatory analysis. Model developement involved pre-processing, feature selection and validation. The calibration models were commericially used for a national forage evaluation scheme."
+) |>
+  cvevents(
+    when = "dates",
+    what = "role",
+    where = "institution",
+    descr = "details"
+  )
+```
