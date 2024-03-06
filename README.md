@@ -16,4 +16,4 @@ View Plain Text
 ## Contact
 For any inquiries or collaborations, you can reach me via:
 
-LinkedIn: Your LinkedIn Profile
+LinkedIn: https://www.linkedin.com/in/drgarethburns/
