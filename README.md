@@ -3,7 +3,7 @@ This repository contains my updated Curriculum Vitae (CV) in various formats. Fe
 
 ## CV Formats Available
 - PDF Version\
-Download PDF
+<a id="raw-url" href="https://github.com/GABurns/CV/blob/main/modern2-cv/SeniorDataScientist_CVGB.pdf">Download PDF</a>
 
 - Word Version\
 View Plain Text
